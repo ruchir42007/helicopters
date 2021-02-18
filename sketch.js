@@ -65,26 +65,40 @@ function setup() {
 	Engine.run(engine);
   
 }
-
-
 function draw() {
   rectMode(CENTER);
   background(0);
  
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
-  
 
 
+
+  keyPressed();
   drawSprites();
- 
+  
   
  
 }
-function keyPressed(){
+function keyPressed()   {
 	if (keyCode===DOWN_ARROW){
-		Matter.Body.setStatic(packagedBody,false);
+		Matter.Body.setStatic(packageBody,false);
 	}
-	
+	if (keyCode===LEFT_ARROW){
+		helicopterSprite.x=helicopterSprite.x-10;
+		var translation={
+			x:-10,y:0
+		}
+	 Matter.Body.translate(packageBody,translation);
 
+	}
+	if (keyCode===RIGHT_ARROW){
+		helicopterSprite.x=helicopterSprite.x+10;
+		var translation={
+			x:10,y:0
+		}
+	 Matter.Body.translate(packageBody,translation);
+	}
 }
+
+
